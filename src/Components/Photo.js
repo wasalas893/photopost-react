@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 
 function Photo(props){
 
@@ -17,6 +19,10 @@ function Photo(props){
             </div>
         </figure>
 
+}
+Photo.propTypes={
+    post: PropTypes.object.isRequired,
+    onRemovePhoto:PropTypes.func.isRequired
 }
 
 
