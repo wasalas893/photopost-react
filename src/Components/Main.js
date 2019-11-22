@@ -4,6 +4,8 @@ import Title from './Title';
 
 import Photowall from './PhotoWall';
 
+import AddPhoto from './AddPhoto';
+
 //main
 class Main extends Component{
 
@@ -25,11 +27,15 @@ class Main extends Component{
             id: "2",
             description: "On a vacation!",
             imageLink: "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/08/24/104670887-VacationExplainsTHUMBWEB.1910x1000.jpg"
-            }]
+            }],
+            screen :'photos' //photos, addphotos
        }
+       //butto click karama wenna oni dwal methanth daiii
        this.removePhoto=this.removePhoto.bind(this);
+       this.navigate=this.navigate.bind(this);
+       
    }
-   //removephoto function
+   //removephoto buttonta adela ake
    removePhoto(postRemoved){
        console.log(postRemoved.description)
        this.setState((state)=>({
@@ -37,18 +43,53 @@ class Main extends Component{
 
        }))
    } 
+//navigation butto aketa adela ake
+navigate(){
+    this.setState({
+        screen: 'addPhoto'
+    })
+}
 
+
+   componentDidMount(){
+       
+   }
+
+
+  componentDidUpdate(prevProps,prevState){
+    
+    console.log(prevState.posts)
+    console.log(this.state)
+}
 
 
 
 
     render(){
+
+      
         return <div>
+            { 
+              this.state.screen==='photos' && (
+
+             <div>
             <Title title={'Photopost'}/>
-            <Photowall posts={this.state.posts} onRemovePhoto={this.removePhoto}/>
             
+            <Photowall posts={this.state.posts} onRemovePhoto={this.removePhoto} onNavigate={this.navigate}/>
+            </div>
+              )
+        }  
+        {
+            this.state.screen==='addPhoto' && (
+             <div>
+                 <AddPhoto/>
+             </div>
+            )
+            }
         </div>
     }
 }
+
+
 
 export default Main;
