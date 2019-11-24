@@ -83,6 +83,7 @@ navigate(){
             this.state.screen==='addPhoto' && (
              <div>
                  <AddPhoto/>
+                 
              </div>
             )
             }
