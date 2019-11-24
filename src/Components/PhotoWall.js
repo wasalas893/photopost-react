@@ -10,7 +10,7 @@ function PhotoWall(props){
 
     return  <div>
 
-                <Link className="addIcon" to="#AddPhoto"></Link>
+                <Link className="addIcon" to="/AddPhoto"></Link>
                {/* <a className="addIcon" onClick={props.onNavigate} href="#AddPhoto"></a>*/}
                { /*<button onClick={props.onNavigate} className="addIcon"> </button>*/}
                <div className="photoGrid">

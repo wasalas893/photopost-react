@@ -6,6 +6,8 @@ import Photowall from './PhotoWall';
 
 import AddPhoto from './AddPhoto';
 
+import {Route} from 'react-router-dom';
+
 //main
 class Main extends Component{
 
@@ -32,7 +34,7 @@ class Main extends Component{
        }
        //butto click karama wenna oni dwal methanth daiii
        this.removePhoto=this.removePhoto.bind(this);
-       this.navigate=this.navigate.bind(this);
+     
        
    }
    //removephoto buttonta adela ake
@@ -44,11 +46,7 @@ class Main extends Component{
        }))
    } 
 //navigation butto aketa adela ake
-navigate(){
-    this.setState({
-        screen: 'addPhoto'
-    })
-}
+
 
 
    componentDidMount(){
@@ -68,26 +66,28 @@ navigate(){
     render(){
 
       
-        return <div>
-            { 
-              this.state.screen==='photos' && (
+        return (<div>
 
-             <div>
-            <Title title={'Photopost'}/>
-            
-            <Photowall posts={this.state.posts} onRemovePhoto={this.removePhoto} onNavigate={this.navigate}/>
-            </div>
-              )
-        }  
-        {
-            this.state.screen==='addPhoto' && (
-             <div>
-                 <AddPhoto/>
-                 
-             </div>
-            )
-            }
-        </div>
+            <Route exact path="/" render={()=>(
+
+                    <div>
+                     <Title title={'Photopost'}/>
+
+                    <Photowall posts={this.state.posts} onRemovePhoto={this.removePhoto} onNavigate={this.navigate}/>
+                   </div>
+
+            )}/>
+
+            <Route path="/AddPhoto" component={AddPhoto}/>  
+                     
+                  
+                    
+                    
+          
+
+             
+             
+        </div>)
     }
 }
 
