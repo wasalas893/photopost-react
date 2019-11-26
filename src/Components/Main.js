@@ -45,7 +45,13 @@ class Main extends Component{
 
        }))
    } 
-//navigation butto aketa adela ake
+ //addpho seen ake
+
+ addphoto(postSubmitted){
+     this.setState(state=>({
+         posts: state.posts.concat([postSubmitted])
+     }))
+ }
 
 
 
@@ -78,7 +84,16 @@ class Main extends Component{
 
             )}/>
 
-            <Route path="/AddPhoto" component={AddPhoto}/>  
+            <Route path="/AddPhoto" render={({history})=>(
+                <AddPhoto onAddPhoto={(addedPost)=>{
+                    //addphoto clic karadddimethanata adata pass weiii
+                    //console.log(addedPost)
+
+                    this.addphoto(addedPost)
+                    //instory aken mull page aketa data tika apsss weiiii pennaiii
+                    history.push('/')
+                }}/>
+            )}/>  
                      
                   
                     
